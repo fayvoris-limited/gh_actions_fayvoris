@@ -26,7 +26,7 @@ jobs:
               id: build
               env: 
                 output1: value1
-                outpu2: value2
+                output2: value2
               run: |
                 echo "status=${{ inputs.build-status }}" >> "$GITHUB_OUTPUT"
                 echo "output1=$output1" >> "$GITHUB_OUTPUT"
