@@ -24,9 +24,10 @@ jobs:
 
             - name: Build 
               id: build
+              env: 
+                output1: value1
+                outpu2: value2
               run: |
-                output1 = value1
-                output2 = value2
                 echo "status=${{ inputs.build-status }}" >> "$GITHUB_OUTPUT"
                 echo "output1=$output1" >> "$GITHUB_OUTPUT"
                 echo "output2=$output2" >> "$GITHUB_OUTPUT"
