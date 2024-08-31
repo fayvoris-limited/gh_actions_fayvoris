@@ -36,12 +36,11 @@ jobs:
 
             - name: Download cached dependencies
               id: cache 
-              if: ${{ inputs.use-cache == true}}
+              if: ${{ inputs.use-cache }}
               uses: actions/cache@v3
               with: 
-                path: ~/.npm 
+                path: 13-caching/react-app/node_modules 
                 key: deps-node-modules-${{ hashFiles('13-caching/react-app/package-lock.json') }}
-                restore-keys: "13-caching/react-app/node_modules"
 
             - name: Install Dependencies
               if: ${{ steps.cache.outputs.cache-hit != 'true' }}
