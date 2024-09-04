@@ -54,13 +54,13 @@ jobs:
             - small
             - large
           include:
-            - opacity: 50
             - color: red
               opacity: 75
             - shape: circle
               opacity: 100
             - color: red
               shape: triangle
+            - opacity: 50
       runs-on: ubuntu-latest
 
       steps:
