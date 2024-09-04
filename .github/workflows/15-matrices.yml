@@ -61,8 +61,11 @@ jobs:
             - color: red
               shape: triangle
             - opacity: 50
+            - color: green
+              shape: circle
           exclude:
-            - opacity: 75
+            - color: green
+              shape: circle
       runs-on: ubuntu-latest
 
       steps:
