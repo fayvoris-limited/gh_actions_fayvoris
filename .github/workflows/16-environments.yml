@@ -2,17 +2,41 @@ name: "16 - Working with Environments"
 
 on:
     workflow_dispatch:
-        inputs:
-            target-env:
-                type: environment
-                default: staging
+        # inputs:
+            # target-env:
+            #     type: environment
+            #     default: staging
 
-run-name: 16 - Working with Environments | env - ${{ inputs.target-env }}
+# run-name: 16 - Working with Environments | env - ${{ inputs.target-env }}
 
 jobs:
-    echo:
+    deploy-staging:
         runs-on: ubuntu-latest
-        environment: ${{ inputs.target-env }}
+        environment: staging
+        env:
+            MY_ENV_VALUE: ${{ vars.environment }}
+            my-env-value: ${{ vars.MY_ENV_VALUE && inputs.target-env || 'default value'}}
+
+        steps:
+            - name: Deploy staging
+              run: |
+                echo "Env variable: $my-env-value"
+
+    e2e-tests:
+        runs-on: ubuntu-latest
+        if: ${{ success() }}
+        needs: deploy-staging
+
+        steps:
+            - name: E2E tests
+              run: |
+                echo "Running E2E"
+
+    deploy-prod:
+        runs-on: ubuntu-latest
+        if: ${{ success() }}
+        needs: e2e-tests
+        environment: prod
         env:
             MY_ENV_VALUE: ${{ vars.environment }}
             my-env-value: ${{ vars.MY_ENV_VALUE && inputs.target-env || 'default value'}}
@@ -20,7 +44,9 @@ jobs:
         steps:
             - name: Echo vars
               run: |
-                echo "Env variable: $my-env-value"
+                echo "Deploying to prod"
+
+
 
             
 
