@@ -19,7 +19,7 @@ jobs:
         steps:
             - name: Deploy staging
               run: |
-                echo "Env variable: $my-env-value"
+                echo "Env variable: ${{ env.my-env-value }}"
 
     e2e-tests:
         runs-on: ubuntu-latest
@@ -38,7 +38,7 @@ jobs:
         environment: prod
         env:
             MY_ENV_VALUE: ${{ vars.environment }}
-            my-env-value: ${{ vars.MY_ENV_VALUE && inputs.target-env || 'default value'}}
+            my-env-value: ${{ vars.MY_ENV_VALUE || 'default value'}}
 
         steps:
             - name: Echo vars
