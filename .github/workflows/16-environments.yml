@@ -14,8 +14,7 @@ jobs:
         runs-on: ubuntu-latest
         environment: staging
         env:
-            MY_ENV_VALUE: ${{ vars.environment }}
-            my-env-value: ${{ vars.MY_ENV_VALUE && inputs.target-env || 'default value'}}
+            my-env-value: ${{ vars.MY_ENV_VALUE || 'default value'}}
 
         steps:
             - name: Deploy staging
