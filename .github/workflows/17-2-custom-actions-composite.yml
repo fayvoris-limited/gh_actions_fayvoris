@@ -18,9 +18,6 @@ on:
             debug:
                 description: "Whether the output debug messages to the console"
                 required: false
-            gh-token:
-                description: "Authentication token with repository access. Must have write access to contents and pull-requests"
-                required: false
 
 run-name: 17 - 2 - Custom Actions - JS - BB ${{ inputs.base-branch}} - TB- ${{ inputs.target-branch }} WD - ${{ inputs.working-dir }} - Debug - ${{ inputs.debug }}
 
