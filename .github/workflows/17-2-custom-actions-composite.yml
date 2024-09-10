@@ -13,6 +13,7 @@ on:
                 required: false
             working-dir:
                 description: "The working directory of the project to check for dependency updates"
+                default: 17-custom-actions/react-app
                 required: true
             debug:
                 description: "Whether the output debug messages to the console"
@@ -21,7 +22,7 @@ on:
                 description: "Authentication token with repository access. Must have write access to contents and pull-requests"
                 required: false
 
-run-name: 17 - 2 - Custom Actions - JS - Base branch- ${{ inputs.base-branch}} - Target branch - ${{ inputs.target-branch }} Working directory - ${{ inputs.working-dir }} - Debug - ${{ inputs.debug }}
+run-name: 17 - 2 - Custom Actions - JS - BB ${{ inputs.base-branch}} - TB- ${{ inputs.target-branch }} WD - ${{ inputs.working-dir }} - Debug - ${{ inputs.debug }}
 
 jobs:
     dependency-update:
@@ -32,3 +33,7 @@ jobs:
 
             - name: Check for dependency updates
               uses: ./.github/actions/js-dependency-update
+              with:
+                base-branch: ${{ inputs.base-branch }}
+                target-branch: ${{ inputs.target-branch }}
+                working-dir: ${{ inputs.working-dir }}
