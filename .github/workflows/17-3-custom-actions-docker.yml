@@ -6,10 +6,10 @@ on:
             url:
                 type: choice
                 options: 
-                    - 'https://unsplash.com/'
+                    - 'https://www.google.com'
                     - 'https://unsplashed44555.com/'
                     - 'my goodness.com'
-                default: 'https://unsplash.com/'
+                default: 'https://www.google.com'
             max-trials:
                 description: "Maximum trials until action fails"
                 default: '10'
