@@ -2,10 +2,6 @@ name: "Ping URL"
 
 description: "Ping URL until maximum trials have exceeded. If result is not 200 until then, fails the action."
 
-runs: 
-  using: docker
-  image: Dockerfile
-
 inputs:
   url:
     description: "URL to ping"
@@ -21,8 +17,13 @@ inputs:
     default: '5'
     required: false
 
-  
+outputs:
+  url-reachable: 
+    description: Whether the url is reachable
 
+runs: 
+  using: docker
+  image: Dockerfile
 
   
 

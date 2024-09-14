@@ -20,6 +20,11 @@ inputs:
     description: "'dev' or 'prod'. Controls whether dev dependencies are installed"
     default: dev
 
+outputs:
+  install-deps: 
+    description: "Whether dependencies were installed or not"
+    value: ${{ steps.cache.outputs.cache-hit != 'true' }}
+
 runs: 
   using: composite
   steps:
@@ -41,4 +46,5 @@ runs:
         ${{ inputs.target-env == 'dev' && 'npm ci' || 'npm ci --omit=dev'}}
       shell: bash
       working-directory: ${{ inputs.working-dir }}
+
 
