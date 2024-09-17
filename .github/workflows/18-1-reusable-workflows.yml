@@ -20,7 +20,7 @@ jobs:
 
         outputs:
             build-status: ${{ steps.build.outputs.build-status }}
-            url: ${{ steps.build.outputs.url }}
+            url: ${{ steps.deploy.outputs.url }}
 
         steps:
             - name: Checkout repo
