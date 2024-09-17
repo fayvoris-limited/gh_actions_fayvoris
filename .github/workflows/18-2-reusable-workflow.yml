@@ -6,6 +6,8 @@ on:
 jobs:
     deploy:
         uses: ./.github/workflows/18-1-reusable-workflows.yml
+        with:
+            target-directory: 'test-dir'
 
     print-outputs:
         runs-on: ubuntu-latest
