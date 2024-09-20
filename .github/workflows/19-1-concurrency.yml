@@ -14,8 +14,8 @@ jobs:
             - uses: actions/checkout@v4
 
             - name: Ping URL 
-              uses: docker-ping-url
-              env:
-                url: 'https://unsplash.com/'
+              uses: ./.github/actions/docker-ping-url
+              with:
+                url: 'https://unsplash2024.com/'
                 max_trials: 20
                 delay: 5
